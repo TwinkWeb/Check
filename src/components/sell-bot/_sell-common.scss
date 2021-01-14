@@ -1,0 +1,58 @@
+@mixin sell-common-styles() {
+  .bg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: 218px;
+    height: 218px;
+    background: radial-gradient(
+        50% 50% at 50% 50%,
+        rgba(72, 113, 232, 0.15) 0%,
+        rgba(71, 112, 231, 0.01) 89.06%
+    );
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+  }
+  .headline {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    text-transform: capitalize;
+    margin-bottom: 32px;
+    &.mb {
+      margin-bottom: 14px;
+    }
+  }
+  .title {
+    width: 100%;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #afafaf;
+    margin-bottom: 6px;
+  }
+  .btn {
+    svg {
+      margin-right: 6px;
+    }
+  }
+  .btn.formBtn {
+    margin-top: 18px;
+    width: 192px;
+    &.btn2 {
+      margin-top: 33px;
+    }
+  }
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+}

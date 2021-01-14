@@ -1,0 +1,26 @@
+/* ==== MOBILE =======*/
+$max-mobile: 767px;
+
+/* ==== TABLET =======*/
+$max-tablet: 1170px;
+
+/* ==== DESKTOP =======*/
+$max-desktop: 1560px;
+
+@mixin mobile {
+  @media (max-width: $max-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $max-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $max-desktop) {
+    @content;
+  }
+}

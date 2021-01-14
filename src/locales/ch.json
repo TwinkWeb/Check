@@ -1,0 +1,75 @@
+{
+  "common": {
+    "ok": "好",
+    "activate": "启用",
+    "deactivate": "停用",
+    "delete": "删除",
+    "tradelink": "贸易通",
+    "mail": "邮件",
+    "add": "加",
+    "success": "成功"
+  },
+  "navigation": {
+    "home": "卖皮",
+    "sell-bots": "出售机器人",
+    "bonus": "会员制度",
+    "about": "关于我们",
+    "contacts": "联络人",
+    "partners": "伙伴"
+  },
+  "sidebar": {
+    "tabs": {
+      "profile": "个人资料",
+      "history": "历史",
+      "multi": "多"
+    },
+    "currency": "货币",
+    "balance": "平衡",
+    "tradelink": "您的贸易链接：",
+    "authBy": "通过以下方式登录：",
+    "statistics": "您统计",
+    "bonus": "奖金",
+    "sell": "已售出",
+    "profit": "利润",
+    "withdraw": "收回"
+  },
+  "history_item": {
+    "sell": "卖",
+    "exit": "出口"
+  },
+  "sell-bot": {
+    "sell-skins": "卖皮",
+    "sell-bot": "出售机器人"
+  },
+  "about": {
+    "title": "关于我们（FAQ）",
+    "nameProject": " Lu13.com",
+    "mainText": "一个可以立即出售CS的平台：go，dota 2，rust和tf2皮肤。 您可以使用网站上提供的任何付款系统（包括银行卡）几乎立即获得钱，但是可能会发生延误（原因不取决于我们，而仅取决于收款人的银行）.",
+    "block1": {
+      "title": "销售-在哪里获得？",
+      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+    },
+    "block2": {
+      "title": "销售-在哪里获得？",
+      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+    },
+    "block3": {
+      "title": "销售-在哪里获得？",
+      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+    },
+    "block4": {
+      "title": "销售-在哪里获得？",
+      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+    },
+    "block5": {
+      "title": "销售-在哪里获得？",
+      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+    }
+  },
+  "partners": {
+    "title": "对于合作伙伴",
+    "nameProject": " Lu13.com",
+    "mainText": "一个可以立即出售CS的平台：go，dota 2，rust和tf2皮肤。 您可以使用网站上提供的任何付款系统（包括银行卡）几乎立即获得钱，但是可能会发生延误（原因不取决于我们，而仅取决于收款人的银行）.",
+    "worksExample": "工作实例"
+  }
+}

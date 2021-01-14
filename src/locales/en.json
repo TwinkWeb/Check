@@ -1,0 +1,76 @@
+{
+  "common": {
+    "ok": "Ok",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "delete": "Delete",
+    "tradelink": "Tradelink",
+    "mail": "Mail",
+    "login": "Авторизоваться",
+    "add": "Add",
+    "success": "Success"
+  },
+  "navigation": {
+    "home": "Sell skins",
+    "sell-bots": "Sell bot",
+    "bonus": "Loyalty system",
+    "about": "About us (FAQ)",
+    "contacts": "Contacts",
+    "partners": "Partners"
+  },
+  "sidebar": {
+    "tabs": {
+      "profile": "Profile",
+      "history": "History",
+      "multi": "Multi"
+    },
+    "currency": "Currency",
+    "balance": "Balance",
+    "tradelink": "Your tradelink:",
+    "authBy": "Log in via:",
+    "statistics": "You statistic",
+    "bonus": "Bonuses",
+    "sell": "Sold",
+    "profit": "Profit",
+    "withdraw": "Withdraw"
+  },
+  "history_item": {
+    "sell": "Sell",
+    "exit": "Exit"
+  },
+  "sell-bot": {
+    "sell-skins": "Sell skins",
+    "sell-bot": "Sell bot"
+  },
+  "about":{
+      "title": "ABOUT US (FAQ)",
+      "nameProject": "Lu13.com",
+    "mainText": "a platform where you can instantly sell cs: go, dota 2, rust and tf2 skins. you get your money almost instantly using any payment system that is presented on the site, including a bank card, but delays may occur (for reasons that do not depend on us, but only on the recipient's bank).",
+      "block1": {
+        "title": "Sale - where to reap?",
+        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+      },
+      "block2": {
+        "title": "Sale - where to reap?",
+        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+      },
+      "block3": {
+        "title": "Sale - where to reap?",
+        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+      },
+      "block4": {
+        "title": "Sale - where to reap?",
+        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+      },
+      "block5": {
+        "title": "Sale - where to reap?",
+        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+      }
+  },
+  "partners":{
+    "title": "For partners",
+    "nameProject": "Lu13.com",
+    "mainText": "a platform where you can instantly sell CS: GO, DOTA 2, RUST and TF 2 skins. you get your money almost instantly using any payment system that is presented on the site, including a bank card, but delays may occur (for reasons that do not depend on us, but only on the recipient's bank).",
+    "workExample": "WORK EXAMPLES"
+  }
+}

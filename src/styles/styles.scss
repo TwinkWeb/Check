@@ -1,0 +1,218 @@
+@import "breackpoints";
+@import "colors";
+@import "button";
+@import "dialog";
+@import "sidebar";
+@import "loaders";
+@import "variables";
+@import "elevation";
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  color: white;
+  position: relative;
+}
+
+.el-message {
+  top: initial !important;
+  right: -120px;
+  background-color: $black;
+  left: initial;
+  border: none;
+  border-radius: 20px;
+  min-width: 270px;
+  height: 82px;
+  bottom: 20px;
+  box-shadow: 9px -5px 8px -36px $primary, 9px 0px 61px -16px $primary;
+  z-index: 2000;
+
+  .el-message__icon {
+    width: 78px;
+    margin-top: 10px;
+    background-position: center center;
+    height: 78px;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .el-icon-success {
+    background-image: url("/icons/IconSuccess.svg");
+  }
+
+  .el-icon-error {
+    background-image: url("/icons/IconError.svg");
+  }
+
+  .el-icon-warning {
+    background-image: url("/icons/IconWarning.svg");
+  }
+
+  .el-message__content {
+    font-weight: 700;
+    font-size: 20px;
+    color: $white;
+  }
+}
+
+.root-container {
+  position: relative;
+  max-width: $max-width;
+  margin: 0 auto 50px auto;
+  @include tablet {
+    width: 100%;
+    padding: 0 20px;
+  }
+  z-index: 2;
+}
+
+.container-fluid {
+  width: 100%;
+}
+
+.content-mid {
+  position: relative;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+button {
+  cursor: pointer;
+}
+
+.content-side {
+  position: relative;
+  z-index: 2;
+  background-image: url(/img/marbleTexture.jpg);
+  border-radius: 24px;
+  max-width: 272px;
+  @include mat-elevation(24, black, .8);
+}
+
+.content-middle {
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $primary;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $primaryHover;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+

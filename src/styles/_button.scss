@@ -1,0 +1,84 @@
+.btn {
+  background-color: $primary;
+  color: $blackText;
+  transition: 0.3s ease-in-out;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0 16px;
+  text-decoration: unset;
+  &.mw {
+    min-width: 124px;
+  }
+  &.bold {
+    font-size: 12px;
+    font-weight: 700;
+  }
+  &.big {
+    height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  &.gray {
+    background-color: $gray;
+    color: $white;
+    &:hover {
+      background-color: $grayHover;
+      box-shadow: unset;
+    }
+  }
+  &.black {
+    background-color: $black;
+    color: $white;
+    &:hover {
+      background-color: $blackHover;
+      box-shadow: unset;
+    }
+  }
+  &:hover {
+    background-color: $primaryHover;
+    box-shadow: 0 5px 13px rgba(254, 208, 37, 0.41);
+  }
+}
+
+.smallBtn {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $black;
+  user-select: none;
+  &.yellow {
+    background-color: $primary;
+    svg {
+      color: $blackText;
+    }
+    &:hover {
+      background-color: $primaryHover;
+      box-shadow: 0 5px 13px rgba(254, 208, 37, 0.41);
+    }
+  }
+  &:hover {
+    background-color: $primary;
+    box-shadow: 0 5px 13px rgba(254, 208, 37, 0.41);
+    svg {
+      color: $black;
+    }
+  }
+  svg {
+    max-width: 16px;
+    color: $primary;
+    transition: 0.3s ease-in-out;
+  }
+}

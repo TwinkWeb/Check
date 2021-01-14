@@ -1,0 +1,25 @@
+@import "colors";
+
+$top-margin: 60px;
+$sidebar-offset: 90px;
+
+.sidebar-backdrop {
+  position: absolute;
+  top: $top-margin;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: $black;
+  z-index: 11;
+  opacity: .6;
+}
+
+#app {
+  .v-sidebar-menu {
+    top: $top-margin;
+    left: -$sidebar-offset;
+    .vsm--list {
+      margin-left: $sidebar-offset;
+    }
+  }
+}
