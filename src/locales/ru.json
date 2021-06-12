@@ -22,6 +22,10 @@
     "reviews": "отзывы",
     "withdraw": "Вывести"
   },
+  "errors": {
+    "not_found": "аккаунт не найден",
+    "forbidden": "инвентарь закрыт"
+  },
   "navigation": {
     "home": "Продать скины",
     "sell-bots": "Продать бота",
@@ -37,6 +41,8 @@
       "multi": "Мульти"
     },
     "currency": "Валюта сайта",
+    "languageAndCurrency": "Язык и валюта",
+    "language": "Язык",
     "balance": "Ваш баланс",
     "tradelink": "Ваш tradelink:",
     "authBy": "Авторизоваться через:",
@@ -44,7 +50,8 @@
     "bonus": "Бонусы",
     "sell": "Продано",
     "profit": "Профит",
-    "withdraw": "Вывести"
+    "withdraw": "Вывести",
+    "refill": "Пополнить"
   },
   "history_item": {
     "sell": "Продажа",
@@ -133,10 +140,17 @@
       "filters": "Фильтры:",
       "hide": "скрыть",
       "show-all": "показать полностю",
-      "games": {
-        "csgo": "CSGO",
-        "dota2": "DOTA2",
-        "rust": "Rust"
+      "dealDialog": {
+        "dealBot": "Бот для сделки",
+        "dealsNumber": "Номер сделки",
+        "confirmInBrowser": "подтвердить в браузере",
+        "confirmInSteam": "подтвердить в steam",
+        "loading": "Ожидаем вашего подтверждения ",
+        "dealStatusSuccess": "Успешно!",
+        "dealStatusError": "Ошибка! попробуйте еще раз",
+        "firstStep": "сверьте данные сделки",
+        "secondStep": "ПОДТВЕРДИ СДЕЛКУ В МОБИЛЬНОМ ПРИЛОЖЕНИИ STEAM",
+        "thirdStep": "получите ваши деньги"
       }
     }
   },
@@ -190,5 +204,15 @@
     "withdrawAction": "Вывести",
     "purseNumber": "№ кошелька",
     "dedicateTransaction": "Разделить платёж"
+  },
+  "withdrawValidationError": {
+    "withdrawQiwiLength": "Данное поле должно содержать  11 символов",
+    "withdrawUmoneyLength": "Данное поле должно содержать 16 символов",
+    "withdrawVisaUaLength": "Данное поле должно содержать 16 символов(18 для карты мир)",
+    "withdrawPmLength": "Данное поле должно содержать 9 символов",
+    "letterContain": "Данное поле не может содержать буквы",
+    "YmValidation": "Номер карты должен начинать с '4100'",
+    "currencyValidation": "Данный вид оплаты может проходить только через USD",
+    "firstLetterValidation": "Первый символ кошелька должен быть буквой"
   }
 }

@@ -3,24 +3,27 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.NODE_ENV === "production" ? "." : "/",
   routes: [
     {
       path: "",
-      redirect: "bots/rate",
       name: "route.sell-items",
       component: () => import("@/views/Common/Common.vue"),
       children: [
+        {
+          path: "",
+          redirect: { name: "route.shopping" }
+        },
         {
           path: "shopping",
           name: "route.shopping",
           components: {
             default: () =>
-              import("@/containers/sell-items/SellItemsFormContainer.vue"),
+              import("@/modules/sell-items/SellItemsFormContainer.vue"),
             controls: () =>
-              import("@/containers/sell-items/SellItemsControlsContainer.vue")
+              import("@/modules/sell-items/SellItemsControlsContainer.vue")
           }
         }
       ]
@@ -44,9 +47,9 @@ export default new Router({
           name: "route.rate-bot",
           components: {
             default: () =>
-              import("@/containers/sell-bot/RateBotFormContainer.vue"),
+              import("@/modules/sell-bot/RateBotFormContainer.vue"),
             controls: () =>
-              import("@/containers/sell-bot/RateBotControlsContainer.vue")
+              import("@/modules/sell-bot/RateBotControlsContainer.vue")
           }
         },
         {
@@ -54,9 +57,9 @@ export default new Router({
           name: "route.sell-bot",
           components: {
             default: () =>
-              import("@/containers/sell-bot/SellBotFormContainer.vue"),
+              import("@/modules/sell-bot/SellBotFormContainer.vue"),
             controls: () =>
-              import("@/containers/sell-bot/SellBotControlsContainer.vue")
+              import("@/modules/sell-bot/SellBotControlsContainer.vue")
           }
         }
       ]
@@ -64,16 +67,17 @@ export default new Router({
     {
       path: "/withdraw",
       name: "withdraw",
-      component: () => import("@/views/Withdraw/Withdraw.vue"),
+      component: () => import("@/views/Common/Common.vue"),
+
       children: [
         {
           path: "/",
           name: "withdraw",
           components: {
             default: () =>
-              import("@/containers/Withdraw/WithdrawFormContainer.vue"),
+              import("@/modules/Withdraw/WithdrawFormContainer.vue"),
             controls: () =>
-              import("@/containers/Withdraw/WithdrawControlsContainer.vue")
+              import("@/modules/Withdraw/WithdrawControlsContainer.vue")
           }
         }
       ]
@@ -100,3 +104,5 @@ export default new Router({
     }
   ]
 });
+
+export { router };

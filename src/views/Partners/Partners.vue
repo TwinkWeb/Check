@@ -1,59 +1,24 @@
 <template>
-  <div class="container">
+  <div class="partnersContainer">
     <div class="partners-title">
       {{ $t("partners.title") }}
     </div>
     <div class="partners-description">
       <span class="partners-description-text">
-        <span class="partners-description-color-text">{{ $t("partners.nameProject")}}</span>
-        {{$t("partners.mainText")}}
+        <span class="partners-description-color-text">{{
+          $t("partners.nameProject")
+        }}</span>
+        {{ $t("partners.mainText") }}
       </span>
     </div>
     <div class="partners-content">
-      <div class="partners-gods">
-        <img
-          :class="{ selected: 0 === activeItem }"
-          src="/icons/IconDionis.svg"
-          alt="icon-dionis"
-        />
-        <img
-          :class="{ selected: 1 === activeItem }"
-          src="/icons/IconGefest.svg"
-          alt="icon-gefest"
-        />
-        <img
-          :class="{ selected: 2 === activeItem }"
-          src="/icons/IconGermes.svg"
-          alt="icon-germes"
-        />
-        <img
-          :class="{ selected: 3 === activeItem }"
-          src="/icons/IconApollon.svg"
-          alt="icon-apollon"
-        />
-        <img
-          :class="{ selected: 4 === activeItem }"
-          src="/icons/IconAres.svg"
-          alt="icon-ares"
-        />
-        <img
-          :class="{ selected: 5 === activeItem }"
-          src="/icons/IconAid.svg"
-          alt="icon-aid"
-        />
-        <img
-          :class="{ selected: 6 === activeItem }"
-          src="/icons/IconPoseidon.svg"
-          alt="icon-poseidon"
-        />
-        <img
-          :class="{ selected: 7 === activeItem }"
-          src="/icons/IconZeus.svg"
-          alt="icon-zeus"
-        />
-      </div>
       <div class="bonus-progress">
-        <bonus-progress :activeItem="activeItem"></bonus-progress>
+        <progress-bar
+          :price-value="priceValue"
+          :img-values="img"
+          :value="value"
+          :present-value="presentValue"
+        ></progress-bar>
       </div>
     </div>
     <div class="example-works">
@@ -79,14 +44,18 @@
 </template>
 
 <script>
-import BonusProgress from "@/views/Bonus/components/bonus-progress";
+import ProgressBar from "@/modules/ProgressBar";
+import { PARTNERS_CONFIG } from "@/config/progressBar.config";
 
 export default {
   name: "Partners",
-  components: { BonusProgress },
+  components: { ProgressBar },
   data() {
     return {
-      activeItem: 1
+      value: 0,
+      priceValue: PARTNERS_CONFIG.priceValue,
+      presentValue: PARTNERS_CONFIG.presentValue,
+      img: PARTNERS_CONFIG.img
     };
   }
 };
@@ -95,9 +64,11 @@ export default {
 <style lang="scss">
 @import "node_modules/include-media/dist/include-media";
 
-.container {
+.partnersContainer {
   display: flex;
   flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
 
   .partners-title {
     display: flex;
@@ -123,6 +94,7 @@ export default {
     box-shadow: 1px 21px 48px 5px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 1px 21px 48px 5px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 1px 21px 48px 5px rgba(0, 0, 0, 0.3);
+
     span {
       font-style: normal;
       font-weight: bold;
@@ -145,32 +117,20 @@ export default {
     box-shadow: 1px 21px 48px 5px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 1px 21px 48px 5px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 1px 21px 48px 5px rgba(0, 0, 0, 0.3);
-    .partners-gods {
-      padding: 0 37px 0 37px;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 25px;
-      margin-top: 60px;
-
-      img {
-        width: 105px;
-        height: 100px;
-      }
-
-      .selected {
-        filter: drop-shadow(0px 0px 40px #f5c100);
-      }
-    }
 
     .bonus-progress {
-      width: 1030px;
-      margin: 0 auto;
+      margin: 90px 0 20px 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
   .example-works {
     display: flex;
     flex-direction: column;
+    margin-bottom: 30px;
 
     .example-title {
       display: flex;

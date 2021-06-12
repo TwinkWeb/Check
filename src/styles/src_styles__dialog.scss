@@ -1,0 +1,87 @@
+@import "node_modules/include-media/dist/include-media";
+@import "elevation";
+@import "colors";
+
+.dialog-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .7);
+  & > div {
+    border: 1px solid $primary;
+    @include mat-elevation(24, $primary, 0.7)
+  }
+}
+
+.dialog-container {
+  width: 80vw;
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 1fr 60px;
+  gap: 0 0;
+  grid-template-areas:
+    "."
+    ".";
+  background-image: url("/img/marbleTexture.jpg");
+  border-radius: 20px;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.dialog-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: "col1 col2 col3 col4";
+  gap: 0 0;
+
+  overflow: auto;
+  padding: 30px;
+}
+
+.dialog-footer {
+  background: $black;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .btn {
+    margin-right: 20px;
+  }
+}
+
+@mixin small-screens() {
+  .dialog-mask {
+    z-index: 100;
+    top: 122px;
+  }
+  .dialog-container {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@include media("≤phone") {
+  @include small-screens;
+}
+
+@include media("≤tablet") {
+  @include small-screens;
+}
+

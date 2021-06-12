@@ -6,6 +6,8 @@ import dateTimeFormats from "@/locales/date-formats";
 
 Vue.use(VueI18n);
 
+export const LOCAL_STORAGE_I18N_KEY = `i18n_storage_key`;
+
 function loadLocaleMessages() {
   const locales = require.context(
     "../locales",
@@ -24,7 +26,10 @@ function loadLocaleMessages() {
 }
 
 function getStartingLocale() {
-  const locale = browserLocale({ countryCodeOnly: true });
+  const _storageLocale = localStorage.getItem(LOCAL_STORAGE_I18N_KEY);
+  const _browserLocale = browserLocale({ countryCodeOnly: true });
+  const locale = _storageLocale || _browserLocale;
+
   if (supportedLocalesInclude(locale)) {
     return locale;
   } else {

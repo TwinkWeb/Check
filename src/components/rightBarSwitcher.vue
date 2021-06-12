@@ -1,20 +1,32 @@
 <template>
-  <shopping-card-container v-if="isAuth" />
+  <shopping-card-component v-if="isAuth" />
   <right-side-bar-contacts v-else></right-side-bar-contacts>
 </template>
 
 <script>
 import RightSideBarContacts from "@/components/rightSideBar/rightSideBarContacts";
-import ShoppingCardContainer from "@/containers/ShoppingCardContainer";
+import ShoppingCardComponent from "@/components/shopping-card/ShoppingCardComponent.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "rightSideBarSwitcher",
-  components: { ShoppingCardContainer, RightSideBarContacts },
+  components: { ShoppingCardComponent, RightSideBarContacts },
   props: {
     isAuth: {
       type: Boolean,
       default: false
     }
+  },
+  methods: {
+    ...mapActions({
+      toggleFullBotInventory: "commonLayoutModule/toggleFullBotInventory"
+    }),
+    submit() {}
+  },
+  computed: {
+    ...mapGetters({
+      fullBotInventoryOpened: "commonLayoutModule/fullBotInventoryOpened"
+    })
   }
 };
 </script>

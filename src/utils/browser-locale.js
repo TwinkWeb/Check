@@ -18,5 +18,5 @@ export function browserLocale(options = {}) {
 }
 
 export function supportedLocalesInclude(locale) {
-  return Object.keys(["en", "ru", "ch"]).includes(locale);
+  return ["en", "ru", "ch"].some(x => x === locale);
 }

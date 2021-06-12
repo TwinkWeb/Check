@@ -30,7 +30,7 @@
       </div>
     </div>
     <transition name="fade">
-      <div v-if="!fullBotInventoryOpened">
+      <div v-if="!(buttonState === 'opened')">
         <div class="atlant"></div>
         <div class="clouds"></div>
       </div>
@@ -43,7 +43,7 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      fullBotInventoryOpened: "commonLayoutModule/fullBotInventoryOpened"
+      buttonState: "commonLayoutModule/buttonState"
     })
   }
 };

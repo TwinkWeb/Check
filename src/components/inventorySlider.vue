@@ -6,6 +6,7 @@
         Фильтры
       </div>
     </div>
+
     <div class="items">
       <div
         class="item"
@@ -37,6 +38,9 @@
           src="https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhnwMzFJTwW09m7hIWZmOXLPr7Vn35c18lwmO7Eu9z20A3i_0NqYmmhLYCWcAFoM1HW81i4wLi9hJ65u5_InXFm7nEgsy3D30vg5cOjZss/360fx360f"
           alt="item"
         />
+        <div class="name" v-if="i === currentItem">
+          Desert Eagle | Blaze (FN)
+        </div>
       </div>
       <div
         class="item"
@@ -54,11 +58,13 @@
         }"
       ></div>
     </div>
+
     <div class="bg" :class="{ scroll }">
       <img src="/img/wheel/trails.png" alt="trails" />
     </div>
     <div class="cell">
-      <div class="name">desert eagle</div>
+      <input type="checkbox" class="custom-checkbox" id="checkbox" />
+      <label for="checkbox">Выбрать все</label>
     </div>
   </div>
 </template>
@@ -118,14 +124,16 @@ export default {
 
 <style lang="scss">
 .inventorySlider {
-  width: 400px;
+  width: 430px;
   height: 400px;
   border-radius: 50%;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
+  position: relative;
+  z-index: 2;
   .bg {
     position: absolute;
     left: 50%;
@@ -173,11 +181,22 @@ export default {
   }
   .name {
     font-weight: 600;
-    font-size: 10px;
+    font-size: 8px;
     line-height: 12px;
     letter-spacing: 0.02em;
     text-transform: capitalize;
-    color: rgba(212, 217, 227, 0.6);
+    color: white;
+    border-radius: 30px;
+    width: 120%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    padding: 5px;
+    background-color: rgb(52, 53, 60);
+    -webkit-box-shadow: 0px 9px 26px -5px rgba(0, 0, 0, 0.76);
+    -moz-box-shadow: 0px 9px 26px -5px rgba(0, 0, 0, 0.76);
+    box-shadow: 0px 9px 26px -5px rgba(0, 0, 0, 0.76);
   }
   .btn {
     svg {
@@ -189,6 +208,12 @@ export default {
     display: flex;
     justify-content: center;
     z-index: 3;
+    position: absolute;
+    right: 0;
+
+    &:nth-child(1) {
+      left: 0;
+    }
   }
   .items {
     display: flex;
@@ -198,13 +223,15 @@ export default {
     position: relative;
     z-index: 2;
     width: 120px;
+    margin-right: 20px;
     .item {
-      width: 120px;
-      height: 120px;
+      width: 125px;
+      height: 125px;
       cursor: pointer;
       transition: 0.3s ease-in-out;
       position: relative;
       user-select: none;
+
       &:after {
         content: "";
         position: absolute;
@@ -235,6 +262,38 @@ export default {
         object-fit: contain;
       }
     }
+  }
+
+  .custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  .custom-checkbox + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .custom-checkbox + label::before {
+    content: "";
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    background-color: #1d1d21;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+
+  .custom-checkbox:checked + label::before {
+    background-color: #f8c302;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='black' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
   }
 }
 </style>

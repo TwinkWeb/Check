@@ -1,6 +1,6 @@
 <template>
   <div class="common-view">
-    <button-switcher :disabled="true"></button-switcher>
+    <button-switcher :disabled="false"></button-switcher>
     <div class="root-container">
       <div class="content-side">
         <side-bar></side-bar>

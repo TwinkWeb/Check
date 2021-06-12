@@ -1,11 +1,12 @@
 export const NAV_CONFIG = {
+  jivoUrl: "//code.jivosite.com/widget/QOXnxKR6QG",
   menuItems: [
     {
       href: "/",
       title: "navigation.home"
     },
     {
-      href: "/bots",
+      href: "/bots/rate",
       title: "navigation.sell-bots"
     },
     {
@@ -24,5 +25,9 @@ export const NAV_CONFIG = {
       href: "/partners",
       title: "navigation.partners"
     }
-  ]
+  ],
+  telegram: {
+    login: "lu13_market_dev_bot",
+    authUrl: "/api/usermanagement/auth/login/telegram"
+  }
 };

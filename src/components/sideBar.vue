@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import SidebarProfileContainer from "../containers/SidebarProfileContainer";
-import SidebarHistoryContainer from "../containers/SidebarHistoryContainer";
-import SidebarMultiContainer from "../containers/SidebarMultiContainer";
+import SidebarProfileContainer from "../modules/SidebarProfileContainer";
+import SidebarHistoryContainer from "../modules/SidebarHistoryContainer";
+import SidebarMultiContainer from "../modules/SidebarMultiContainer";
 import { mapState } from "vuex";
 
 export default {
@@ -143,7 +143,7 @@ export default {
     width: 100%;
     overflow-y: auto;
     height: calc(100% - 40px);
-    padding: 12px;
+    padding: 24px;
   }
 }
 </style>

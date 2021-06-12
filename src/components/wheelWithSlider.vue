@@ -1,6 +1,6 @@
 <template>
   <div class="wheel-with-slider">
-    <wheel v-bind:disabled="disabled"></wheel>
+    <wheel-container v-bind:disable="disabled"></wheel-container>
     <div v-if="!disabled">
       <inventory-slider
         @show-filters="showFiltersDialog()"
@@ -22,13 +22,13 @@
 <script>
 import inventorySlider from "./inventorySlider";
 import Filters from "./filter/filters";
-import wheel from "./Wheel";
 import { create } from "vue-modal-dialogs";
+import WheelContainer from "@/modules/WheelContainer";
 
 const confirm = create(Filters);
 
 export default {
-  components: { inventorySlider, wheel },
+  components: { WheelContainer, inventorySlider },
   props: {
     disabled: {
       type: Boolean,

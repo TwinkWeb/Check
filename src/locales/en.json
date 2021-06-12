@@ -24,7 +24,9 @@
       "history": "History",
       "multi": "Multi"
     },
+    "languageAndCurrency": "Language & Currency",
     "currency": "Currency",
+    "language": "Language",
     "balance": "Balance",
     "tradelink": "Your tradelink:",
     "authBy": "Log in via:",
@@ -32,7 +34,8 @@
     "bonus": "Bonuses",
     "sell": "Sold",
     "profit": "Profit",
-    "withdraw": "Withdraw"
+    "withdraw": "Withdraw",
+    "refill": "refill "
   },
   "history_item": {
     "sell": "Sell",
@@ -42,35 +45,72 @@
     "sell-skins": "Sell skins",
     "sell-bot": "Sell bot"
   },
-  "about":{
-      "title": "ABOUT US (FAQ)",
-      "nameProject": "Lu13.com",
+  "about": {
+    "title": "ABOUT US (FAQ)",
+    "nameProject": "Lu13.com",
     "mainText": "a platform where you can instantly sell cs: go, dota 2, rust and tf2 skins. you get your money almost instantly using any payment system that is presented on the site, including a bank card, but delays may occur (for reasons that do not depend on us, but only on the recipient's bank).",
-      "block1": {
-        "title": "Sale - where to reap?",
-        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
-      },
-      "block2": {
-        "title": "Sale - where to reap?",
-        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
-      },
-      "block3": {
-        "title": "Sale - where to reap?",
-        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
-      },
-      "block4": {
-        "title": "Sale - where to reap?",
-        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
-      },
-      "block5": {
-        "title": "Sale - where to reap?",
-        "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
-      }
+    "block1": {
+      "title": "Sale - where to reap?",
+      "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+    },
+    "block2": {
+      "title": "Sale - where to reap?",
+      "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+    },
+    "block3": {
+      "title": "Sale - where to reap?",
+      "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+    },
+    "block4": {
+      "title": "Sale - where to reap?",
+      "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+    },
+    "block5": {
+      "title": "Sale - where to reap?",
+      "text": "is a fish text often used in print and web design. Lorem Ipsum has been the standard fish for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum to print samples Lorem Ipsum not only successfully survived five centuries without noticeable changes, but also stepped into electronic design. more recently, layout programs such as Aldus PageMaker that use Lorem Ipsum in their templates. "
+    }
   },
-  "partners":{
+  "partners": {
     "title": "For partners",
     "nameProject": "Lu13.com",
     "mainText": "a platform where you can instantly sell CS: GO, DOTA 2, RUST and TF 2 skins. you get your money almost instantly using any payment system that is presented on the site, including a bank card, but delays may occur (for reasons that do not depend on us, but only on the recipient's bank).",
     "workExample": "WORK EXAMPLES"
+  },
+  "modals": {
+    "information": "Infomation about withdraw",
+    "payment": "Payment №: ",
+    "paymentWay": "Payment way: ",
+    "purse": "Purse: ",
+    "sum": "Sum: ",
+    "amountEstimate": "Amount estimate",
+    "commission": "Commision",
+    "computedSum": "Total payable",
+    "sendRequest": "Send request"
+  },
+  "withdraw": {
+    "payment": "Payment № ",
+    "balance": "Your balance: ",
+    "payTransaction": "Payment",
+    "sum": "Sum",
+    "paymentSystems": "Payment ways",
+    "QIWIWarning": "IMPORTANT! Purse's status must be 'Main' ",
+    "QIWIOffer": "I agree that the status of the QIWI wallet is 'main' or higher, otherwise you will not be able to receive the transfer",
+    "offer": "I agree with offer",
+    "agreement": "offerts",
+    "transactionsSum": "Total withdraw",
+    "withdrawAction": "Withdraw",
+    "purseNumber": "№ purse",
+    "dedicateTransaction": "Dedicate payment",
+    "alertCommission": "Using QIWI commission is 2%"
+  },
+  "withdrawValidationError": {
+    "withdrawQiwiLength": "This field must contain 11 symbols",
+    "withdrawUmoneyLength": "This field must contain 16 symbols",
+    "withdrawVisaUaLength": "This field must contain 16 symbols(18 для карты МИР)",
+    "withdrawPmLength": "This field must contain 9 symbols",
+    "letterContain": "This field musnt contain letters",
+    "YmValidation": "Cards number shoul begin with'4100'",
+    "currencyValidation": "This type of paymnet can be only in USD",
+    "firstLetterValidation": "The first symbol of purse must be a letter"
   }
 }

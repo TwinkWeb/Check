@@ -1,75 +1,180 @@
 {
   "common": {
-    "ok": "好",
-    "activate": "启用",
+    "ok": "ok",
+    "activate": "登录",
     "deactivate": "停用",
-    "delete": "删除",
+    "delete": "删去",
     "tradelink": "贸易通",
-    "mail": "邮件",
-    "add": "加",
-    "success": "成功"
+    "mail": "电邮",
+    "add": "赘及",
+    "login": "注册",
+    "success": "成就",
+    "done": "好",
+    "select": "选好",
+    "cancel": "取消",
+    "apply": "应用",
+    "price": "价钱",
+    "agreement": "协议",
+    "accept-terms": "我接受条款",
+    "sell": "卖",
+    "total": "总",
+    "deals": "交易",
+    "reviews": "评价",
+    "withdraw": "收回"
   },
   "navigation": {
-    "home": "卖皮",
-    "sell-bots": "出售机器人",
-    "bonus": "会员制度",
-    "about": "关于我们",
+    "home": "卖 颜色",
+    "sell-bots": "卖机器人",
+    "bonus": "红利",
+    "about": "我们",
     "contacts": "联络人",
-    "partners": "伙伴"
+    "partners": "贸易伙伴"
   },
   "sidebar": {
     "tabs": {
-      "profile": "个人资料",
-      "history": "历史",
+      "profile": "我的",
+      "history": "带使用",
       "multi": "多"
     },
     "currency": "货币",
-    "balance": "平衡",
-    "tradelink": "您的贸易链接：",
-    "authBy": "通过以下方式登录：",
-    "statistics": "您统计",
-    "bonus": "奖金",
-    "sell": "已售出",
-    "profit": "利润",
-    "withdraw": "收回"
+    "balance": "我的待付款",
+    "tradelink": "贸易通",
+    "authBy": "签到",
+    "statistics": "我的订单",
+    "bonus": "红利\"",
+    "sell": "卖",
+    "profit": "",
+    "withdraw": "取消"
   },
   "history_item": {
     "sell": "卖",
-    "exit": "出口"
+    "exit": "取消"
   },
   "sell-bot": {
-    "sell-skins": "卖皮",
-    "sell-bot": "出售机器人"
+    "sell-skins": "卖 颜色",
+    "sell-bot": "卖机器人",
+    "define-bot": "确定机器人",
+    "rate": "评价",
+    "bot-link": "机器人的链接",
+    "form": {
+      "provide-data": "提供数据",
+      "mail": "电邮",
+      "login": "注册",
+      "account": "账户",
+      "password": "密码",
+      "file": "文档"
+    },
+    "filter": {
+      "basket": "垃圾筐",
+      "filters": "形成",
+      "categories": {
+        "look": {
+          "title": "称号",
+          "battle-scarred": "战痕累累",
+          "well-worn": "用过的",
+          "field-tested": "拉练得",
+          "minimal wear": "稍微用",
+          "factory new": "新版",
+          "not painted": "没有色"
+        },
+        "rarity": {
+          "title": "称号",
+          "consumer grade": "消费级",
+          "mil-spec grade": "车规级",
+          "industrial grade": "工业级",
+          "restricted": "受限",
+          "classified": "保密",
+          "covert": "隐秘",
+          "distinguished": "有功劳的",
+          "exceptional": "唯一的",
+          "superior": "好极了",
+          "base grade": "普通级",
+          "master": "高手",
+          "extraordinary": "非凡",
+          "high grade": "高级",
+          "remarkable": "出色",
+          "exotic": "奇异",
+          "contraband": "违禁"
+        },
+        "type": {
+          "title": "种类",
+          "pistol": "手枪",
+          "smg": "冲锋枪",
+          "shotgun": "鸟枪",
+          "machine gun": "机枪",
+          "rifle": "步枪",
+          "sniper rifle": "狙击步枪",
+          "knife": "刀子",
+          "gloves": "手套",
+          "sticker": "期印花",
+          "key": "考试",
+          "graffiti": "涂鸦",
+          "container": "盒",
+          "collectible": "藏品",
+          "music kit": "专辑",
+          "patch": "领章",
+          "tag": "标签",
+          "pass": "出入证",
+          "agent": "经纪人",
+          "gift": "礼物"
+        },
+        "category": {
+          "title": "",
+          "normal": "正常",
+          "stattrak": "startrak",
+          "souvenir": "纪念品",
+          "asterisk": "startrak",
+          "★ stattrak": "startrak"
+        }
+      }
+    },
+    "bot-items": {
+      "title": "机器人的东西",
+      "filters": "滤镜",
+      "hide": "隐藏",
+      "show-all": "看看",
+      "games": {
+        "csgo": "CSGO",
+        "dota2": "DOTA2",
+        "rust": "RUST"
+      }
+    }
+  },
+  "bonus": {
+    "welcome_part1": "开始销售机器人 还有存起来",
+    "welcome_part2": "奖金",
+    "welcome_part3": "现在!",
+    "adv1": "现在开始销售, 很快你会得到一个很好的奖金:)"
   },
   "about": {
-    "title": "关于我们（FAQ）",
-    "nameProject": " Lu13.com",
-    "mainText": "一个可以立即出售CS的平台：go，dota 2，rust和tf2皮肤。 您可以使用网站上提供的任何付款系统（包括银行卡）几乎立即获得钱，但是可能会发生延误（原因不取决于我们，而仅取决于收款人的银行）.",
+    "title": "我们FAQ)",
+    "nameProject": "關於",
+    "mainText": "股吧, 你可以立即出售机器人 CS:GO, Dota 2, Rust и TF2. 你得到你的钱几乎瞬间, 使用网站上显示的任何支付系统, 包括银行卡, 但是可能会出现延迟(对于不以任何方式依赖于我们的原因，但仅限于收件人的银行).",
     "block1": {
-      "title": "销售-在哪里获得？",
-      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+      "title": "其他帐户授权– 为什么?",
+      "text": "其他帐户授权, 可以通过启动 Gmail, Telegram, VK, Discord这允许您将一组帐户合并到一个帐户下还有这将有助于在取款时保护您, 因为您将需要额外的确认（双因素身份验证). 通过一个帐户管理所有帐户还将帮助您更快地提升忠诚度计划阶梯, 由于使用多个帐户时，所有奖金将累积在一个帐户上Steam."
     },
     "block2": {
-      "title": "销售-在哪里获得？",
-      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+      "title": "卖 – 在哪里点击?",
+      "text": "通过转让方法销售前颜色您必须指定交易链接系统会自动评估库存中的物料. 选择项目后，您同意销售条款. 点击后\\\"卖 \\\"弹出一个模态窗口, 重要! 我们总是给东西的回报，并创建一个交易ID号."
     },
     "block3": {
-      "title": "销售-在哪里获得？",
-      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+      "title": "卖机器人» -它是如何实现的？",
+      "text": "要出售，您必须提供一个链接的, 机器人和我们的软件会评估, 与其他项目不同，我们评估帐户上的所有项目(除了主CS:GO, 还有 Dota 2 和 Rust, TF2) 如果该项目被评为\\\"TRASH\\\" -也许它太便宜或流动性差. 同意销售后，您需要接受报价并指定帐户中的数据(电流mafile, 帐户用户名和密码Steam 还有电邮. 注意! 只有电邮MailGroup), 接下来，在现场直播中，将检查该帐户, 执行所有操作后，这笔钱将被记入您的帐户(如果在任何阶段出现错误，请联系支持)"
     },
     "block4": {
-      "title": "销售-在哪里获得？",
-      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+      "title": "试一下机器人 – 这是什么?",
+      "text": "同意要约并点击按钮后\\\"好\\\"不应该创建活跃的交易者如果它们存在，系统会自动取消所有交易. 同意要约并按下键后«卖», 该帐户租赁给公司LU13 在合规性和变更数据的变更过程和测试数据完成后的时间,收到资金在卖方的资产负债表,该帐户进入全额和无条件的使用由公司LU13. 如果在任何阶段的验证过程中发生错误(输入的数据不匹配，第三方更改数据，缺少指定数量的项目), 租赁单方面终止，帐户返回给以前的所有者(该公司不会进行任何操作的帐户，直到交易的最终完成)"
     },
     "block5": {
-      "title": "销售-在哪里获得？",
-      "text": "是一种鱼文本，通常用于印刷和网页设计。LoremIpsum自16世纪初以来一直是拉丁文本的标准鱼。当时，一位不愿透露姓名的打印机创建了大量的鱼文本。字体大小和形状，使用Lorem Ipsum打印样本Lorem Ipsum不仅成功存活了五个世纪而没有明显变化，但也涉足了电子设计。随着Letraset床单的发行，在60年代和60年代出现了Lorem Ipsum的样本在现代流行起来。最近，诸如Aldus PageMaker之类的布局程序在其模板中使用了Lorem Ipsum。"
+      "title": "结论–可算!",
+      "text": "从销售资金转到网站上的内部帐户，您可以提取到网站上显示的任何支付系统, 资金可用于5种不同的付款."
     }
   },
   "partners": {
-    "title": "对于合作伙伴",
-    "nameProject": " Lu13.com",
-    "mainText": "一个可以立即出售CS的平台：go，dota 2，rust和tf2皮肤。 您可以使用网站上提供的任何付款系统（包括银行卡）几乎立即获得钱，但是可能会发生延误（原因不取决于我们，而仅取决于收款人的银行）.",
-    "worksExample": "工作实例"
+    "title": "我们FAQ)",
+    "nameProject": "",
+    "mainText": "您可以立即出售机器人 cs:go, dota 2, rust и tf2. 你得到你的钱几乎瞬间，使用呈现在网站上的任何支付系统，包括银行卡，但可能会延迟(对于不以任何方式依赖于我们的原因，但仅限于收件人的银行).",
+    "workExample": "作品示例"
   }
 }

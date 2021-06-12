@@ -1,124 +1,147 @@
 <template>
-  <div class="wheel" ref="wheel" @click="click">
-    <img
-      class="img rotateItem"
-      src="/img/wheel/bg.png"
-      alt="bg"
-      :style="{ transform: `rotate(${deg}deg)` }"
-    />
-    <img
-      v-if="!disabled"
-      class="img section"
-      src="/img/wheel/sector.png"
-      alt="bg"
-      :class="{
-        allow: !allowRotate,
-        prev: lastRotation === 'prev',
-        next: lastRotation === 'next'
-      }"
-    />
-    <img
-      v-if="!disabled"
-      class="img rotateItem"
-      src="/img/wheel/items.png"
-      alt="bg"
-      :style="{ transform: `rotate(${deg}deg)` }"
-    />
-    <icon-greek-border-round class="greekBorder"></icon-greek-border-round>
+  <div>
+    <icon-greek-border-round class="greekBorder" />
+    <div class="wheel-wrapper-line"></div>
+    <div ref="wheel" :style="{ transform: `rotate(${deg}deg)` }" class="wheel">
+      <img
+        v-if="!disabled"
+        class="selected-item"
+        src="/img/wheel/sector.png"
+        alt="bg"
+        :style="{ transform: `rotate(${-deg - 68}deg)` }"
+        :class="[zIndex]"
+      />
+      <div
+        v-if="newArr.length"
+        class="wheel-wrapper"
+        :class="[changeRotate]"
+        :key="newArr[0].value"
+      >
+        <div
+          v-for="(item, index) in newArr"
+          :key="item.id"
+          :class="[
+            `wheel-item${index + 1}`,
+            { appearItem: item.classes.appearItem },
+            'opacity'
+          ]"
+          @click="changeItem(item)"
+        >
+          <wheel-item :img="item.img" :value="item.value" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import _ from "lodash";
+import wheelItem from "@/components/wheelItem";
+import MoveCircle from "@/components/services/wheelServece";
+
+const circleMove = new MoveCircle();
+
 export default {
-  props: {
-    disabled: {
-      type: Boolean,
-      default: false
-    }
-  },
+  name: "Wheel",
+  components: { wheelItem },
   data() {
     return {
-      W: 586,
-      deg: 0,
-      step: 45,
+      deg: 22,
+      prevItem: 1,
       allowRotate: true,
-      lastRotation: ""
+      disabled: false,
+      appearNumber: 8,
+      newArr: [],
+      changeRotate: 0,
+      zIndex: ""
     };
   },
+  props: {
+    menuItems: {
+      type: Array,
+      default() {
+        return [];
+      }
+    },
+    isDisabled: {
+      type: Boolean,
+      default() {
+        return false;
+      }
+    }
+  },
+  watch: {
+    menuItems: {
+      handler() {
+        if (!this.newArr) return;
+        this.newArr = _.cloneDeep(this.menuItems).map(item => ({
+          ...item,
+          classes: {
+            appearItem: true
+          }
+        }));
+      },
+      immediate: true
+    }
+  },
   methods: {
-    click($event) {
-      if (!this.allowRotate) {
+    async changeItem(item) {
+      const { id, value } = item;
+      if (value === "firstMenu" || value === "secondMenu") {
+        await this.$emit("changeMenu", value);
+        this.deg = 22;
+        this.prevItem = 1;
+        this.newArr.forEach(c => {
+          c.classes.appearItem = false;
+        });
+        this.appearFunction();
         return;
       }
-      this.allowRotate = false;
-      setTimeout(() => {
-        this.allowRotate = true;
-      }, 300);
-      let x = $event.offsetX;
-      let y = $event.offsetY;
-      let range = this.dotsRange(x, y, this.W / 2, this.W / 2);
-      if (range > 290 || range < 230) {
-        return;
-      }
-      let segment = this.getSegment(this.getAngle(x, y));
-      if (segment === 2) {
-        return;
-      }
-      if (segment === 1) {
-        this.next();
-      }
-      if (segment === 3) {
-        this.prev();
-      }
-      if (segment === 4) {
-        this.prev(2);
-      }
-      if (segment === 5) {
-        this.prev(3);
-      }
-      if (segment === 6) {
-        this.next(4);
-      }
-      if (segment === 7) {
-        this.next(3);
-      }
-      if (segment === 8) {
-        this.next(2);
-      }
-    },
-    getSegment(a) {
-      return Math.ceil(a / (360 / 8));
-    },
-    getAngle(x, y) {
-      let x1 = this.W / 2 - this.W / 2;
-      let y1 = 0 - this.W / 2;
-      let x2 = x - this.W / 2;
-      let y2 = y - this.W / 2;
-      let scalar = x1 * x2 + y1 * y2;
-      let v1 = Math.sqrt(x1 * x1 + y1 * y1);
-      let v2 = Math.sqrt(x2 * x2 + y2 * y2);
-      let alpha = scalar / (v1 * v2);
-      if (x < this.W / 2) {
-        return ((Math.PI - Math.acos(alpha) + Math.PI) * 180) / Math.PI;
+
+      circleMove.setState([1, 2, 3, 4, 5, 6, 7, 8], this.prevItem);
+
+      const { direction, steps } = circleMove.steps(id);
+      if (direction === -1) {
+        this.deg -= steps * 45;
       } else {
-        return (Math.acos(alpha) * 180) / Math.PI;
+        this.deg += steps * 45;
       }
+      this.prevItem = id;
+      console.log(id, value);
     },
-    dotsRange(x1, y1, x2, y2) {
-      return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    appearFunction() {
+      if (!this.newArr.length) return;
+      this.changeRotate = "changeRotate";
+      this.zIndex = "zIndex";
+      const t = setInterval(() => {
+        if (this.appearNumber === 0) {
+          clearInterval(t);
+          this.appearNumber = 8;
+        } else {
+          if (this.newArr[this.appearNumber + 6]) this.zIndex = "";
+          this.newArr[this.appearNumber - 1].classes.appearItem = true;
+          this.appearNumber--;
+        }
+      }, 100);
+    },
+    sleep(ms) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+        }, ms);
+      });
     },
     next(step = 1) {
-      this.deg += this.step * step;
-      this.lastRotation = "next";
+      this.deg += 45 * step;
     },
     prev(step = 1) {
-      this.deg -= this.step * step;
-      this.lastRotation = "prev";
+      this.deg -= 45 * step;
     },
+
     initWheelEvents() {
       this.$refs.wheel.addEventListener("wheel", e => {
         e.preventDefault();
-        if (!this.allowRotate) {
+        if (this.isDisabled) {
           return;
         }
         this.allowRotate = false;
@@ -127,14 +150,23 @@ export default {
         }, 300);
         if (e.deltaY > 0) {
           this.next();
+
+          this.prevItem -= 1;
+          if (this.prevItem < 1) {
+            this.prevItem = 8;
+          }
         } else {
           this.prev();
+          this.prevItem += 1;
+          if (this.prevItem > 8) {
+            this.prevItem = 1;
+          }
         }
       });
     }
   },
   mounted() {
-    if (!this.disabled) {
+    if (!this.isDisabled) {
       this.initWheelEvents();
     }
   }
@@ -142,89 +174,164 @@ export default {
 </script>
 
 <style lang="scss">
+.greekBorder {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+}
+
+.wheel-wrapper-line {
+  background-image: url("/img/wheel/wheelOutlineCircle.png");
+  height: 600px;
+  width: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+}
+
 .wheel {
   width: 586px;
   height: 586px;
+  background-image: url("/img/wheel/bg.png");
   position: relative;
-  overflow: hidden;
-  background-image: url("/img/wheel/wheelOutlineCircle.png");
-  padding: 8px;
+  transition: 0.3s ease-in-out;
+  border-radius: 50%;
   background-position: center;
   background-size: contain;
   user-select: none;
-  transform: rotate(-67deg);
-  &:before {
-    content: "";
+
+  .appearItem {
+    animation: appearItem 0.1s;
+    animation-timing-function: linear;
+    animation-delay: 0.1;
+    animation-fill-mode: forwards;
+  }
+
+  .changeRotate {
+    animation: 1.2s changeRotate;
+  }
+
+  .selected-item {
+    width: 586px;
+    height: 586px;
+    background-position: center;
+    background-size: contain;
+    user-select: none;
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    z-index: 1;
+    transition: 0.31s ease-in-out;
+  }
+
+  .zIndex {
+    z-index: 10;
+  }
+
+  .opacity {
+    opacity: 0;
+  }
+
+  .wheel-wrapper {
+    width: 586px;
+    height: 586px;
+    position: relative;
     border-radius: 50%;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100% - 120px);
-    height: calc(100% - 120px);
-    cursor: default;
-    z-index: 2;
-    border-radius: 50%;
-  }
-  .greekBorder {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 480px;
-  }
-  .img {
-    position: absolute;
-    left: 8px;
-    top: 8px;
-    width: calc(100% - 16px);
-    height: calc(100% - 16px);
-  }
-  .rotateItem {
-    transition: 0.3s ease-in-out;
-  }
-  .section {
-    transition: 0.3s ease-in-out;
-    &.next.allow {
-      animation-name: next;
-      animation-duration: 0.3s;
+
+    .hideSelectedBlock {
+      display: none;
     }
-    &.prev.allow {
-      animation-name: prev;
-      animation-duration: 0.3s;
+
+    .wheel-item1 {
+      position: absolute;
+      top: 1%;
+      left: 15%;
+      transform: rotate(-21deg);
+      animation-fill-mode: forward;
     }
-    @keyframes next {
-      0% {
-        transform: rotate(0deg);
-      }
-      30% {
-        transform: rotate(5deg);
-      }
-      100% {
-        transform: rotate(0deg);
-      }
+
+    .wheel-item2 {
+      position: absolute;
+      bottom: 86%;
+      left: 51%;
+      transform: rotate(22deg);
+      animation-fill-mode: forward;
     }
-    @keyframes prev {
-      0% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(-5deg);
-      }
-      100% {
-        transform: rotate(0deg);
-      }
+
+    .wheel-item3 {
+      position: absolute;
+      bottom: 62%;
+      left: 75%;
+      transform: rotate(67deg);
+      animation-fill-mode: forward;
     }
+
+    .wheel-item4 {
+      position: absolute;
+      bottom: 26%;
+      left: 75%;
+      -webkit-transform: rotate(135deg);
+      transform: rotate(112deg);
+      animation-fill-mode: forward;
+    }
+
+    .wheel-item5 {
+      position: absolute;
+      bottom: 1%;
+      left: 51%;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(158deg);
+      animation-fill-mode: forward;
+    }
+
+    .wheel-item6 {
+      position: absolute;
+      bottom: 2%;
+
+      left: 15%;
+      transform: rotate(203deg);
+      animation-fill-mode: forward;
+    }
+
+    .wheel-item7 {
+      position: absolute;
+      bottom: 26%;
+      left: -9%;
+      transform: rotate(248deg);
+      animation-fill-mode: forward;
+    }
+
+    .wheel-item8 {
+      position: absolute;
+      bottom: 61%;
+      left: -10%;
+      -webkit-transform: rotate(315deg);
+      transform: rotate(292deg);
+      animation-fill-mode: forward;
+    }
+  }
+}
+
+.transition {
+  transition: 0.1s;
+}
+
+@keyframes changeRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes appearItem {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>

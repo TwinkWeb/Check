@@ -5,26 +5,13 @@
       <img :src="avatar || defaultAvatar" alt="avatar" />
     </div>
     <div class="name">{{ name }}</div>
-    <div class="currency">
-      <div class="title">{{ $t("sidebar.currency") }}</div>
-      <div class="currencyDropdown">
-        <dropdown
-          @input="setCurrency($event)"
-          :value="currency"
-          :options="currencyOptions"
-          :by="'id'"
-        ></dropdown>
-      </div>
-    </div>
     <div class="title">{{ $t("sidebar.balance") }}</div>
     <div class="balance">
       <div class="amount">
         {{ $currency(balance) }}
       </div>
 
-      <div @click="$router.push('/withdraw')" class="btn mw">
-        {{ $t("sidebar.withdraw") }}
-      </div>
+      <toggle-button v-bind="buttons" :state="state" @toggle="handleToggle" />
     </div>
     <div class="title">{{ $t("sidebar.tradelink") }}</div>
     <div class="trade">
@@ -107,6 +94,35 @@ export default {
     };
   },
   computed: {
+    buttons() {
+      return {
+        leftButton: {
+          code: "refill",
+          text: this.$t("sidebar.refill"),
+          route: "/bots/rate"
+        },
+        leftButtonSell: {
+          code: "refill",
+          text: this.$t("sidebar.refill"),
+          route: "/bots/sell"
+        },
+        rightButton: {
+          code: "withdraw",
+          text: this.$t("sidebar.withdraw"),
+          route: "/withdraw"
+        }
+      };
+    },
+    state() {
+      if (this.$route.path === "/shopping") {
+        return "refill";
+      }
+      const item = Object.values(this.buttons).find(
+        button => this.$route.path === button.route
+      );
+
+      return item.code;
+    },
     defaultAvatar() {
       return `/img/${this.emptyAvatar}`;
     },
@@ -120,6 +136,14 @@ export default {
     }
   },
   methods: {
+    handleToggle(code) {
+      const item = Object.values(this.buttons).find(
+        button => code === button.code
+      );
+      if (item && item.route != this.$route.path) {
+        this.$router.push(item.route);
+      }
+    },
     setCurrency(currency) {
       this.$emit("currency-change", currency);
     },

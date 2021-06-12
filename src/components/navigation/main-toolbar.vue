@@ -2,7 +2,6 @@
   <div class="container-fluid bg">
     <div class="main-menu-container">
       <div class="main-toolbar">
-        <discord-auth style="width: 100px; height: 100px;"></discord-auth>
         <hamburger-button
           v-if="minWidth"
           :active="collapsed"
@@ -20,20 +19,17 @@
           </ul>
         </div>
         <div v-if="isAuth" class="dropdowns">
-          <user-account-bage @account-sign-out="signOut"></user-account-bage>
-          <LocaleSwitcher />
+          <user-account-bage
+            :name="name"
+            :avatar="avatar"
+            @account-sign-out="signOut"
+          />
         </div>
         <div v-else class="dropdowns">
-          <div class="authButtons">
-            <div @click="openLoginPopup()" class="loginBtn multi">
-              MULTI
-            </div>
-            <div @click="login" class="loginBtn steam">
-              steam
-            </div>
-            <div class="knob"></div>
-          </div>
+          <toggle-button v-bind="buttons" @toggle="toggleButton($event)" />
         </div>
+
+        <I18NL10NMonitorComponent @openi18n="openI18n" />
       </div>
     </div>
     <deals-container />
@@ -42,20 +38,32 @@
 
 <script>
 import HamburgerButton from "../buttons/hamburger-button";
-import userAccountBage from "../userAccountBage";
-import LocaleSwitcher from "../locale/LocaleSwitcher";
+import userAccountBage from "./UserAccountBage";
 
 import { MIN_DEVICE_WIDTH } from "@/utils/constants";
-import DealsContainer from "@/containers/DealsContainer";
-import { mapGetters } from "vuex";
+import DealsContainer from "@/modules/deals-bar/DealsContainer";
+import { mapGetters, mapState } from "vuex";
 import { create } from "vue-modal-dialogs";
-import DialogLayout from "../dialog/DialogLayout";
+import MultiAuthDialog from "@/components/authentication/multi-auth-dialog";
+import I18nL10nDialog from "@/components/navigation/I18nL10nDialog";
+import I18NL10NMonitorComponent from "@/components/navigation/I18NL10NMonitorComponent";
 
-const authBox = create(DialogLayout, "DialogMode");
+const confirm = create(MultiAuthDialog, "dialogMode");
+const i18nConfirm = create(I18nL10nDialog, "dialogMode");
 
 export default {
   name: "MainToolbar",
   methods: {
+    toggleButton(code) {
+      if (code === "MULTI") {
+        this.openLoginPopup();
+        return;
+      }
+      if (code === "steam") {
+        this.login();
+        return;
+      }
+    },
     login() {
       this.$signIn();
     },
@@ -66,14 +74,33 @@ export default {
       this.$signOut();
     },
     openLoginPopup() {
-      authBox("authConfirm")
+      confirm("multi-auth")
         .then(value => console.log(value))
         .catch(e => console.log(e));
+    },
+    openI18n() {
+      i18nConfirm("i18nConfirm");
     }
   },
   computed: {
     ...mapGetters({
       isAuth: "auth/logged"
+    }),
+    buttons() {
+      return {
+        leftButton: {
+          code: "MULTI",
+          text: "MULTI"
+        },
+        rightButton: {
+          code: "steam",
+          text: "STEAM"
+        }
+      };
+    },
+    ...mapState({
+      name: state => state.profileState.profileInfo.name,
+      avatar: state => state.profileState.profileInfo.avatarUrl
     }),
     collapsed() {
       return this.$store.state.commonLayoutModule.collapsed;
@@ -89,8 +116,8 @@ export default {
   components: {
     DealsContainer,
     userAccountBage,
-    LocaleSwitcher,
-    HamburgerButton
+    HamburgerButton,
+    I18NL10NMonitorComponent
   }
 };
 </script>
@@ -195,6 +222,18 @@ export default {
         position: relative;
         text-decoration: none;
 
+        &:hover {
+          &:after {
+            content: "";
+            bottom: -10px;
+            width: 100%;
+            background: $primary;
+            left: 0;
+            position: absolute;
+            height: 2px;
+          }
+        }
+
         &.router-link-exact-active {
           &:after {
             content: "";
@@ -232,62 +271,39 @@ export default {
   .dropdowns {
     display: flex;
   }
-
   .authButtons {
-    color: black;
     display: flex;
-    position: relative;
-    width: 148px;
-    height: 36px;
-    background: #141419;
+    background-color: #141419;
     border-radius: 30px;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-
-    .steam {
-      color: rgba(255, 255, 255, 0.3);
-    }
-
-    .steam:hover {
-      color: black;
-      transition: 0.3s;
-    }
-
-    .steam:hover ~ .knob {
-      left: 75px;
-    }
-
-    .knob {
-      font-weight: bolder;
-      font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    .loginBtn {
+      cursor: pointer;
+      width: 69px;
+      height: 28px;
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: pointer;
-      text-transform: uppercase;
-      position: absolute;
-      width: 69px;
-      height: 28px;
-      background: #f8c300;
-      border-radius: 20px;
-      top: 4px;
-      left: 3px;
-      transition: 0.3s;
-    }
+      margin: 4px;
 
-    .loginBtn {
-      font-weight: bold;
-      font-size: 11px;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 3;
-      cursor: pointer;
-
-      img {
-        height: 45px;
-        border-radius: 5px;
-        margin-right: 2px;
+      .multi-login-text {
+        color: #000000;
+        font-size: 11px;
+        font-weight: bold;
       }
+
+      .steam-login-text {
+        font-weight: bold;
+        font-size: 11px;
+        line-height: 13px;
+        color: rgba(255, 255, 255, 0.3);
+        position: absolute;
+      }
+    }
+    .multi-login {
+      background-color: #f8c300;
+      border-radius: 30px;
     }
   }
 }

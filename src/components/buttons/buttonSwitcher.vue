@@ -3,7 +3,7 @@
     <router-link
       to="/"
       class="btn"
-      :class="{ inactive: $route.name !== 'home' }"
+      :class="{ inactive: $route.path !== '/shopping' }"
     >
       {{ $t("sell-bot.sell-skins") }}
     </router-link>
@@ -11,7 +11,7 @@
       to="/bots"
       class="btn"
       :class="{
-        inactive: $route.name !== 'bots' && $route.name !== 'full-bot-inventory'
+        inactive: $route.path !== '/bots/rate'
       }"
     >
       {{ $t("sell-bot.sell-bot") }}
@@ -21,6 +21,9 @@
 
 <script>
 export default {
+  mounted() {
+    console.log(this.$route.path !== "/bots/rate");
+  },
   props: {
     value: {},
     disabled: Boolean

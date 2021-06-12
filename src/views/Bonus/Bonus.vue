@@ -10,50 +10,13 @@
             {{ $t("bonus.welcome_part3") }}
           </p>
         </div>
-        <div class="bonusGods">
-          <img
-            :class="{ selected: 0 === activeItem }"
-            src="/icons/IconDionis.svg"
-            alt="icon-dionis"
-          />
-          <img
-            :class="{ selected: 1 === activeItem }"
-            src="/icons/IconGefest.svg"
-            alt="icon-gefest"
-          />
-          <img
-            :class="{ selected: 2 === activeItem }"
-            src="/icons/IconGermes.svg"
-            alt="icon-germes"
-          />
-          <img
-            :class="{ selected: 3 === activeItem }"
-            src="/icons/IconApollon.svg"
-            alt="icon-apollon"
-          />
-          <img
-            :class="{ selected: 4 === activeItem }"
-            src="/icons/IconAres.svg"
-            alt="icon-ares"
-          />
-          <img
-            :class="{ selected: 5 === activeItem }"
-            src="/icons/IconAid.svg"
-            alt="icon-aid"
-          />
-          <img
-            :class="{ selected: 6 === activeItem }"
-            src="/icons/IconPoseidon.svg"
-            alt="icon-poseidon"
-          />
-          <img
-            :class="{ selected: 7 === activeItem }"
-            src="/icons/IconZeus.svg"
-            alt="icon-zeus"
-          />
-        </div>
         <div class="bonusProgress">
-          <bonus-progress :activeItem="activeItem"></bonus-progress>
+          <progress-bar
+            :value="value"
+            :present-value="presentValue"
+            :price-value="priceValue"
+            :img-values="img"
+          ></progress-bar>
         </div>
       </div>
       <div class="bonus-actions">
@@ -73,14 +36,18 @@
 </template>
 
 <script>
-import BonusProgress from "@/views/Bonus/components/bonus-progress";
+import ProgressBar from "@/modules/ProgressBar";
+import { BONUS_CONFIG } from "@/config/progressBar.config";
 
 export default {
   name: "Bonus",
-  components: { BonusProgress },
+  components: { ProgressBar },
   data() {
     return {
-      activeItem: 1
+      value: 0,
+      priceValue: BONUS_CONFIG.priceValue,
+      presentValue: BONUS_CONFIG.presentValue,
+      img: BONUS_CONFIG.img
     };
   }
 };
@@ -88,10 +55,11 @@ export default {
 
 <style lang="scss">
 .root-container {
+  max-width: 1300px;
   .bonus-wrapper {
     background-image: url("/img/bonusBg1.png");
     background-size: cover;
-    border-radius: 40px 40px 0 0;
+    border-radius: 40px 40px 40px 40px;
     width: 100%;
     height: auto;
     box-shadow: 1px 21px 48px 5px rgba(0, 0, 0, 0.3);
@@ -128,8 +96,8 @@ export default {
         margin-bottom: 25px;
 
         img {
-          width: 105px;
-          height: 100px;
+          width: 200px;
+          height: 130px;
         }
 
         .selected {
@@ -138,8 +106,10 @@ export default {
       }
 
       .bonusProgress {
-        width: 1030px;
-        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 
@@ -149,6 +119,7 @@ export default {
       align-items: center;
       background-image: url("/img/bonusBg2.png");
       width: 100%;
+      border-radius: 0 0 40px 40px;
 
       .bonus-actions-text {
         padding-top: 24px;

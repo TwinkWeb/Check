@@ -1,17 +1,17 @@
 <template>
   <div class="dropdown" :class="{ open }" v-click-outside="close">
     <div class="head" @click="toggle">
-      <span>{{ value_ }}</span>
+      <span>{{ viewValue }}</span>
       <icon-arrow></icon-arrow>
     </div>
     <div class="body">
       <div
-        v-for="(option, i) in options"
+        v-for="(option, i) in optionsFiltered"
         :key="i"
         class="item"
         @click="select(option)"
       >
-        {{ by ? option[by] : option }}
+        {{ viewValueKey ? option[viewValueKey] : option }}
       </div>
     </div>
   </div>
@@ -23,21 +23,25 @@ import ClickOutside from "vue-click-outside";
 export default {
   props: {
     value: {
-      type: [Object, String, Number],
-      default: null
+      type: String
     },
     options: {
-      type: [Object, Array],
+      type: Array,
       default() {
         return [];
       }
     },
-    by: {
-      type: [String],
+    valueKey: {
+      type: String,
       default() {
-        return undefined;
+        return "id";
       }
-    }
+    },
+    viewValueKey: {
+      type: String
+    },
+    placeholder: String,
+    hideSelectedFromList: Boolean
   },
   directives: {
     ClickOutside
@@ -56,9 +60,30 @@ export default {
       this.open = false;
     },
     select(option) {
-      this.$emit("input", this.by ? option[this.by] : option);
-      this.value_ = this.by ? option[this.by] : option;
+      this.$emit("input", option);
+      this.value_ = option[this.valueKey];
       this.close();
+    }
+  },
+  computed: {
+    viewValue() {
+      if (!this.options.length) {
+        return this.placeholder || "select";
+      }
+      const option = this.options.find(o => o[this.valueKey] === this.value);
+
+      if (option != null) {
+        return option[this.viewValueKey];
+      } else {
+        return "";
+      }
+    },
+    optionsFiltered() {
+      if (!this.hideSelectedFromList) {
+        return this.options;
+      } else {
+        return this.options.filter(o => o[this.valueKey] !== this.value);
+      }
     }
   }
 };

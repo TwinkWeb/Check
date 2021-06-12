@@ -1,9 +1,9 @@
 import * as types from "@/store/mutation-types";
 
 const currencyOptions = new Map([
-  ["RUB", { id: "RUB", viewValue: "Рубль" }],
-  ["USD", { id: "USD", viewValue: "Dollar" }],
-  ["CNY", { id: "CNY", viewValue: "元" }]
+  ["RUB", { id: "RUB", viewValue: "Рубль", currencySymbol: "₽" }],
+  ["USD", { id: "USD", viewValue: "Dollar", currencySymbol: "$" }],
+  ["CHN", { id: "CHN", viewValue: "元", currencySymbol: "¥" }]
 ]);
 
 export const currency = {
@@ -26,13 +26,15 @@ export const currency = {
       }
     },
     currencyOptions: state =>
-      state.items.map(x => currencyOptions.get(x.currency)),
+      state.items
+        .filter(x => currencyOptions.has(x.currency))
+        .map(x => currencyOptions.get(x.currency)),
     currency: state => state.currency
   },
 
   mutations: {
     [types.ADD_CURRENCIES](state, currencies) {
-      state.items = currencies;
+      state.items = currencies.data || [];
     },
     [types.SET_CURRENCY](state, currency) {
       state.currency = currency;

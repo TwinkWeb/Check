@@ -1,6 +1,11 @@
 <template>
   <div class="vueInput">
-    <input type="text" v-model="model" v-bind="$attrs" />
+    <input
+      :disabled="disabled"
+      :type="inputType"
+      v-model="model"
+      v-bind="$attrs"
+    />
     <slot name="btn"></slot>
   </div>
 </template>
@@ -8,6 +13,13 @@
 <script>
 export default {
   props: {
+    disabled: {
+      type: Boolean
+    },
+    inputType: {
+      type: String,
+      default: "text"
+    },
     value: {
       default: "",
       type: String

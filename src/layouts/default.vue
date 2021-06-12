@@ -1,6 +1,8 @@
 <template>
   <div class="default-layout">
     <main-toolbar />
+    <icon-left-light class="light left" />
+    <icon-right-light class="light right" />
     <router-view></router-view>
   </div>
 </template>
@@ -20,10 +22,22 @@ export default {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("/img/common-background.jpg");
+  background-image: linear-gradient(to right bottom, rgba(40, 40, 46, 0.95)),
+    url("/img/BG.png");
   background-attachment: fixed;
   position: relative;
   overflow: hidden;
+  .light {
+    position: absolute;
+  }
+
+  .left {
+    top: 54%;
+  }
+  .right {
+    top: 10%;
+    right: 0;
+  }
   .container {
     position: relative;
   }

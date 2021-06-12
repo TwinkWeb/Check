@@ -7,16 +7,18 @@ export const payment = {
     paymentTransactionLength: 1,
     paymentTransactions: [],
     disabledState: false,
-    paymentWays: [
-      { name: "QIWI" },
-      { name: "YOMONEY" },
-      { name: "Tether" },
-      { name: "Etherium" },
-      { name: "Md" },
-      { name: "BITC" },
-      { name: "PM" },
-      { name: "Md UAH" }
-    ]
+    loader: false,
+    currentTransaction: 1,
+    paymentWays: {
+      qiwi: "QIWI",
+      yomoney: "YOMONEY",
+      thether: "Tether",
+      Etherium: "Etherium",
+      md: "Md",
+      bitc: "BITC",
+      pm: "PM",
+      mdUah: "MdUAH"
+    }
   }),
 
   actions: {
@@ -26,11 +28,29 @@ export const payment = {
     setCurrentPayment({ commit }, name) {
       commit(types.SET_CURRENT_PAYMENT, name);
     },
+    setDisabledState({ commit }, payload) {
+      commit(types.SET_DISABLED_STATE, payload);
+    },
     sendRequest({ commit }) {
       commit(types.SET_DISABLED_STATE, true);
-      setTimeout(() => {
+      commit(types.SET_LOADER, true);
+
+      const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject();
+        }, 5000);
+      });
+
+      p.then(() => {
+        commit(types.SET_LOADER, false);
+        setTimeout(() => {
+          commit(types.CLEAR_TRANSACTIONS);
+          commit(types.SET_DISABLED_STATE, false);
+        }, 600);
+      }).catch(() => {
         commit(types.SET_DISABLED_STATE, false);
-      }, 3000);
+        commit(types.SET_LOADER, false);
+      });
     },
 
     setPaymentTransactions({ commit }, payload) {
@@ -39,14 +59,22 @@ export const payment = {
   },
   getters: {
     offerData: s => s.offerData,
+    currentTransaction: s => s.currentTransaction,
+    validationState: s => {
+      const transaction = s.paymentTransactions.find(
+        i => i.validation === false
+      );
+      return transaction || s.paymentTransactions.length === 0 ? true : false;
+    },
     currencyPayment: s => s.currencyPayment,
     disabledState: s => s.disabledState,
+    loader: s => s.loader,
     paymentWays: s => s.paymentWays,
     paymentTransactionLength: s => s.paymentTransactionLength,
     payTransactions: s => s.paymentTransactions,
     sumPaymentWithCommission: s =>
       s.paymentTransactions.reduce(function(acc, current) {
-        if (current.paymentWay === "QIWI") {
+        if (current.paymentWay === s.paymentWays.qiwi) {
           return acc + Number(current.sum) * 0.02;
         } else {
           return acc;
@@ -66,16 +94,31 @@ export const payment = {
         state.paymentTransactionLength++;
       }
     },
+
     [types.SET_TAB_PAYMENT](state, payload) {
       const transaction = state.paymentTransactions.find(c => c.id === payload);
-      console.log(transaction);
       if (transaction) {
         state.currencyPayment = transaction.paymentWay;
       }
     },
+
+    [types.CLEAR_TRANSACTIONS](state) {
+      state.paymentTransactions = [];
+    },
+
     [types.SET_CURRENT_PAYMENT](state, payment) {
-      state.currencyPayment = payment;
+      payment.num ? (state.currentTransaction = payment.num) : "";
+
+      if (payment.paymentWay) {
+        state.currencyPayment = payment.paymentWay;
+
+        state.paymentTransactions[state.currentTransaction - 1].paymentWay =
+          payment.paymentWay;
+      }
       state.validationError = "";
+    },
+    [types.SET_LOADER](state, payload) {
+      state.loader = payload;
     },
 
     [types.SET_VALIDATION_ERROR](state, messageError) {
@@ -83,6 +126,7 @@ export const payment = {
     },
 
     [types.SET_PAYMENT_TRANSACTION](state, payload) {
+      state.currentTransaction = payload.id;
       let filteredTransactions = state.paymentTransactions.filter(
         c => c.id != payload.id
       );
@@ -91,10 +135,12 @@ export const payment = {
         purse: payload.purse,
         sum: payload.sum,
         id: payload.id,
+        validation: payload.validation,
         paymentWay: state.currencyPayment
       };
       filteredTransactions.push(paymentTransaction);
-      state.paymentTransactions = filteredTransactions;
+      let sortTransactions = filteredTransactions.sort((a, b) => a.id - b.id);
+      state.paymentTransactions = sortTransactions;
     },
 
     [types.SET_DISABLED_STATE](state, payload) {

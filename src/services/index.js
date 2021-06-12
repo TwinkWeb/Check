@@ -1,3 +1,6 @@
-export { ProfileService } from "./profile.service";
-export { ItemPricesService } from "./item-prices.service";
-export { currencyService } from "./currency.service";
+export { userManagementService } from "./usermanagement.service";
+export { inventoryService } from "./inventory.service";
+export { loggerTransaction } from "./logger.service";
+import axiosInstance from "./http-client";
+
+export { axiosInstance };

@@ -3,33 +3,22 @@ import * as types from "@/store/mutation-types";
 export const auth = {
   namespaced: true,
   state: {
-    session: {
-      logged: false,
-      token: null
-    }
+    logged: false
   },
 
   getters: {
-    logged: state => state.session.logged,
-    token: state => state.session.token,
-    session: state => state.session
+    logged: state => state.logged
   },
 
   mutations: {
-    [types.LOGOUT](state) {
-      state.session.token = null;
-      state.session.logged = false;
-    },
-
-    [types.LOGIN](state, token) {
-      state.session.token = token;
-      state.session.logged = true;
+    [types.LOGGED](state, logged) {
+      state.logged = logged;
     }
   },
 
   actions: {
-    login({ commit }, token) {
-      commit(types.LOGIN, token);
+    setLogged({ commit }, logged) {
+      commit(types.LOGGED, logged);
     },
     logout({ commit }) {
       commit(types.LOGOUT);

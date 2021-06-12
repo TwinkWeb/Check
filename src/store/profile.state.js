@@ -1,9 +1,7 @@
 import * as types from "@/store/mutation-types";
 import * as apiService from "../../mocks/profile";
 
-import { ProfileService } from "@/services";
-
-const profileService = new ProfileService();
+import { userManagementService } from "@/services";
 
 export const profileState = {
   namespaced: true,
@@ -12,9 +10,24 @@ export const profileState = {
     profileLoaded: false,
     historyLoaded: false,
     MultiLoaded: false,
+    linkedAccounts: {
+      discord: false,
+      google: false,
+      vkontakte: false,
+      telegram: false
+    },
     profileInfo: {
-      avatar: null,
-      name: null
+      id: null,
+      name: null,
+      email: null,
+      avatarUrl: null,
+      createdAt: null,
+      updatedAt: null,
+      role: null
+    },
+    account: {
+      id: null,
+      roles: null
     },
     statistic: {
       bonuses: 0,
@@ -60,9 +73,26 @@ export const profileState = {
       state.loading = true;
     },
 
-    [types.GET_PROFILE_SUCCESS](state) {
+    [types.GET_PROFILE_SUCCESS](state, profileData) {
+      const {
+        id,
+        name,
+        email,
+        avatarUrl,
+        createdAt,
+        updatedAt,
+        role
+      } = profileData;
+
       state.loading = false;
       state.profileLoaded = true;
+      state.profileInfo.id = id;
+      state.profileInfo.email = email;
+      state.profileInfo.name = name;
+      state.profileInfo.avatarUrl = avatarUrl;
+      state.profileInfo.createdAt = createdAt;
+      state.profileInfo.updatedAt = updatedAt;
+      state.profileInfo.role = role;
     },
 
     [types.GET_PROFILE_HISTORY_SUCCESS](state, payload) {
@@ -102,33 +132,18 @@ export const profileState = {
     setTradelink({ commit }, link) {
       commit(types.SET_PROFILE_TRADELINK, link);
     },
-    getProfile({ commit }) {
+    getProfile({ commit, dispatch }) {
       commit(types.GET_PROFILE_REQUEST);
-      profileService
-        .getUserAndAuth()
+      userManagementService
+        .me()
         .then(x => x.data)
         .then(data => {
-          console.log(data);
-          return commit(types.GET_PROFILE_SUCCESS, data);
+          commit(types.GET_PROFILE_SUCCESS, data);
+          dispatch("auth/setLogged", true, { root: true });
         })
-        .catch(e => commit(types.GET_PROFILE_ERROR, e));
-    },
-    getHistory({ commit }) {
-      commit(types.GET_PROFILE_HISTORY_REQUEST);
-      profileService
-        .getContacts()
-        .then(payload => {
-          console.log(payload);
-          commit(types.GET_PROFILE_HISTORY_SUCCESS, { history });
-        })
-        .catch(e => commit(types.GET_PROFILE_HISTORY_ERROR, e));
-    },
-    getMulti({ commit }) {
-      commit(types.GET_PROFILE_MULTI_REQUEST);
-      apiService
-        .profileApi({ delay: 1500 })
-        .then(({ multi }) => commit(types.GET_PROFILE_MULTI_SUCCESS, { multi }))
-        .catch(e => commit(types.GET_PROFILE_MULTI_ERROR, e));
+        .catch(e => {
+          commit(types.GET_PROFILE_ERROR, e);
+        });
     },
     deleteMulti({ commit }, id) {
       commit(types.DELETE_PROFILE_MULTI_REQUEST);

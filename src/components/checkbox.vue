@@ -38,13 +38,14 @@ export default {
   align-items: center;
   justify-content: center;
   background-color: $black;
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   border-radius: 3px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   user-select: none;
   margin-right: 12px;
+  border: 1px solid $primary;
   &.checked {
     background-color: $black;
     svg {
@@ -52,7 +53,7 @@ export default {
     }
   }
   svg {
-    width: 8px;
+    width: 15px;
     color: $primary;
     opacity: 0;
     transition: 0.3s ease-in-out;
